@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DanielleMullaneWeek5</title>
+  <title>Danielle Mullane Week 5</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body id = "top">
+  <div class = "navbar navbar-inverse navbar-fixed-top" role = "navigation">
+    <div class = "container">
+      <div class = "navbar-header">
+        <a class = "navbar-brand" href = "/">Week 5</a>
+      </div>
+    </div>
+  </div>
 
+  <div class = "container">
+
+    <% flash.each do |type,message| %>
+    <% if type == "notice" %>
+    <b>
+      <center>
+        <div class = "alert alert-success">
+          <%= message %>
+        </div>
+      </center>
+    </b>
+    <% elsif type == "alert" %>
+    <b>
+      <center>
+        <div class "alert alert-danger">
+          <%= message %>
+        </div>
+      </center>
+    </b>
+    <% end %>
+    <% end %>
+
+    <%= yield %>
+
+    <footer>
+      <div class = "row">
+        <div class = "col-md-6">
+        </div>
+
+        <div class = "col-md-6 text-right">
+          <a href = "https://www.linkedin.com/in/daniellemullane" target = "_blank">
+            <%= image_tag "linked_in-f852478f8950eb3fca3367cb545aaa52.jpg", alt: "LinkedIn", class: "img-footer", width: "28", height: "25" %>
+          </a>
+
+          <a href = "https://github.com/demullane" target = "_blank">
+            <%= image_tag "GitHub-de8164cc6a609537cfdab331e002ebb3.png", alt: "GitHub", class: "img-footer", width: "28", height: "28" %>
+          </a>
+
+          <a href = "https://twitter.com/demullane" target = "_blank">
+            <%= image_tag "Twitter-0c8c529fb7181e05ab5c30416e3a70fa.png", alt: "Twitter", class: "img-footer", width: "28", height: "23" %>
+          </a>
+
+          <a href = "https://students.gschool.it/cohorts/9/students/202" target = "_blank">
+            <%= image_tag "galvanize-g-b3da24895ed7d4fd33c43d9226c16242.png", alt: "Galvanize g", class: "img-footer", width: "16", height: "28" %>        </a>
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>

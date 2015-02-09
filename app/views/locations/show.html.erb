@@ -1,0 +1,44 @@
+<div class = "page-header">
+  <div class = "pull-right">
+    <%= link_to 'Delete', @location, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', edit_location_path(@location), class: "btn btn-info" %>
+    <%= link_to 'Create Event', new_location_event_path(@location), class: "btn btn-info" %>
+  </div>
+  <h1><%= @location.name %></h1>
+</div>
+
+<ol class = "breadcrumb">
+  <li><a href = "/locations">Locations</a></li>
+  <li class = "active"><%= @location.name %></li>
+</ol>
+
+<p>
+<strong>&nbsp Name: </strong><%= @location.name %><br />
+<strong>&nbsp Address: </strong><%= @location.address %><br />
+<strong>&nbsp Zipcode: </strong><%= @location.zipcode %>
+</p>
+
+<p><strong>&nbsp Events: </strong></p>
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Requires ID</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @location.events.each do |event| %>
+      <tr>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <td><%= event.require_id ? 'Yes' : 'No' %></td>
+        <td class = "text-right">
+          <%= link_to 'Edit', edit_location_event_path(@location, event), class: "btn btn-info" %>
+          <%= link_to 'Delete', location_event_path(@location, event), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
